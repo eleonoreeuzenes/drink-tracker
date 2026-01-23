@@ -1,0 +1,43 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.log
+
+# Virtual environments
+venv/
+env/
+.venv/
+.conda/
+conda-env/
+
+# Jupyter (if you ever experiment)
+.ipynb_checkpoints/
+
+# -------------------------
+# FastAPI / Uvicorn
+# -------------------------
+# Uvicorn reload artifacts
+*.pid
+
+# -------------------------
+# Environment variables
+# -------------------------
+.env
+.env.*
+*.env
+
+# -------------------------
+# Docker & local data
+# -------------------------
+docker-compose.override.yml
+docker-data/
+*.tar
+
+
