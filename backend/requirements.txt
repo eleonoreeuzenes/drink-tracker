@@ -5,3 +5,5 @@ pytest
 httpx
 pytest-asyncio
 ruff
+pytesseract
+Pillow

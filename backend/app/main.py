@@ -2,6 +2,8 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
 import shutil
 from pathlib import Path
+import shutil 
+from app.services.ocr_service import extract_text
 
 app = FastAPI()
 
@@ -21,4 +23,6 @@ async def upload_image(file: UploadFile = File(...)):
     with file_path.open("wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    return {"message": "Image uploaded successfully", "filename": file.filename}
+    # OCR processing 
+    text = extract_text(file_path) 
+    return { "filename": file.filename, "ocr_text": text }

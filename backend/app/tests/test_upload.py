@@ -1,21 +1,22 @@
+from pathlib import Path
 from fastapi.testclient import TestClient
 from app.main import app
 
 client = TestClient(app)
 
-def test_upload_image(tmp_path):
-    # Create a fake image file
-    fake_image = tmp_path / "test.jpg"
-    fake_image.write_bytes(b"fake image bytes")
+def test_upload_image():
+    assets_dir = Path(__file__).parent / "assets"
+    image_path = assets_dir / "easy_text.png"
 
-    with fake_image.open("rb") as f:
+    with image_path.open("rb") as f:
         response = client.post(
             "/upload",
-            files={"file": ("test.jpg", f, "image/jpeg")}
+            files={"file": ("easy_text.png", f, "image/png")}
         )
 
     assert response.status_code == 200
     assert "filename" in response.json()
+
 
 def test_upload_invalid_file(tmp_path):
     # Create a fake text file

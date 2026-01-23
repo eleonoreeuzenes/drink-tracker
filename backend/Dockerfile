@@ -1,9 +1,7 @@
 FROM python:3.11-slim
 
-# Install system dependencies (optional but useful for OCR later)
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Install Tesseract OCR
+RUN apt-get update && apt-get install -y tesseract-ocr && apt-get clean
 
 # Create working directory
 WORKDIR /app
