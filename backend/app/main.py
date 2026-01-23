@@ -1,8 +1,9 @@
-from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import JSONResponse
 import shutil
 from pathlib import Path
-import shutil
+
+from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import JSONResponse
+
 from app.services.ocr_service import extract_text
 
 app = FastAPI()

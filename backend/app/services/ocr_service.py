@@ -1,6 +1,7 @@
-from PIL import Image
-import pytesseract
 from pathlib import Path
+
+import pytesseract
+from PIL import Image
 
 
 def extract_text(image_path: Path) -> str:

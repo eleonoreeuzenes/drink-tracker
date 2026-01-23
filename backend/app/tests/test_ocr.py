@@ -1,5 +1,6 @@
-from app.services.ocr_service import extract_text
 from pathlib import Path
+
+from app.services.ocr_service import extract_text
 
 
 def test_extract_text_with_real_image():
