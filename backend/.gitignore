@@ -39,6 +39,6 @@ conda-env/
 docker-compose.override.yml
 docker-data/
 *.tar
-uploads/*
+uploads/
 
 
