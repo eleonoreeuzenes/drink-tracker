@@ -1,6 +1,8 @@
 from pathlib import Path
 from doctr.io import DocumentFile
 from doctr.models import ocr_predictor
+from app.core.drink_messages import KNOWN_DRINK_MESSAGES
+
 
 model = ocr_predictor(pretrained=True)
 
