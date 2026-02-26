@@ -1,11 +1,22 @@
 from pathlib import Path
+from doctr.io import DocumentFile
+from doctr.models import ocr_predictor
 
-import pytesseract
-from PIL import Image
-
+model = ocr_predictor(pretrained=True)
 
 def extract_text(image_path: Path) -> str:
-    """Extract text from an image using Tesseract OCR."""
-    image = Image.open(image_path)
-    text = pytesseract.image_to_string(image)
-    return text.strip()
+    doc = DocumentFile.from_images(str(image_path))
+
+    result = model(doc)
+
+    lines = []
+    for page in result.pages:
+        for block in page.blocks:
+            for line in block.lines:
+                words = [w.value for w in line.words]
+                if words:
+                    lines.append(" ".join(words))
+
+    text = " ".join(lines).strip()
+
+    return text if text else ""
