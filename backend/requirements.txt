@@ -2,9 +2,10 @@ fastapi
 uvicorn[standard]
 python-multipart
 
-# OCR
+# OCR & other tools
 Pillow
 python-doctr[torch]
+rapidfuzz
 
 # Tests
 pytest
@@ -13,3 +14,4 @@ httpx
 
 # Lint
 ruff
+

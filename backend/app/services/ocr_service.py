@@ -1,4 +1,6 @@
 from pathlib import Path
+from backend.app.core.fuzzy_matching import match_drink_message
+from backend.app.core.text_normalization import normalize_text
 from doctr.io import DocumentFile
 from doctr.models import ocr_predictor
 from app.core.drink_messages import KNOWN_DRINK_MESSAGES
@@ -6,7 +8,7 @@ from app.core.drink_messages import KNOWN_DRINK_MESSAGES
 
 model = ocr_predictor(pretrained=True)
 
-def extract_text(image_path: Path) -> str:
+def extract_raw_text(image_path: Path) -> str:
     doc = DocumentFile.from_images(str(image_path))
 
     result = model(doc)
@@ -19,6 +21,16 @@ def extract_text(image_path: Path) -> str:
                 if words:
                     lines.append(" ".join(words))
 
-    text = " ".join(lines).strip()
+    return " ".join(lines).strip()
 
-    return text if text else ""
+def interpret_text(text: str) -> str | None:
+    normalized_text = normalize_text(text)
+    match = match_drink_message(normalized_text)
+    if match:
+        return match
+    else:
+        return normalize_text or ""
+
+def extract_text(image_path: Path) -> str:
+    raw_text = extract_raw_text(image_path)
+    return interpret_text(raw_text)

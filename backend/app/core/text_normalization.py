@@ -1,6 +1,8 @@
 # app/core/text_normalization.py
-import unicodedata
+
 from app.core.drink_messages import KNOWN_DRINK_MESSAGES
+import unicodedata 
+import re
 
 def normalize_text(text: str) -> str:
     """
@@ -15,7 +17,6 @@ def normalize_text(text: str) -> str:
     text = normalize_accents(text)
     text = normalize_noise(text)
     text = normalize_spaces(text)
-    text = normalize_drink_messages(text)
     
     return text
 
@@ -23,18 +24,15 @@ def normalize_lowercase(text: str) -> str:
     return text.lower()
 
 def normalize_accents(text: str) -> str: 
-    return text
+    normalized = unicodedata.normalize("NFD", text)
+    return "".join(c for c in normalized if unicodedata.category(c) != "Mn")
+
 
 def normalize_noise(text: str) -> str: 
-    return text
+    # Remove all characters that are not letters, numbers, or whitespace
+    return re.sub(r"[^a-zA-Z0-9\s]", " ", text)
     
     
 def normalize_spaces(text: str) -> str: 
-    return text
+    return re.sub(r"\s+", " ", text).strip()
 
-def normalize_drink_messages(text: str) -> str:
-    text = normalize_lowercase(text)
-    for known_message in KNOWN_DRINK_MESSAGES:
-        if known_message in text:
-            return known_message
-    return text
