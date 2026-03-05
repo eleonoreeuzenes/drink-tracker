@@ -1,9 +1,17 @@
 fastapi
 uvicorn[standard]
 python-multipart
-pytest
-httpx
-pytest-asyncio
-ruff
-pytesseract
+
+# OCR & other tools
 Pillow
+python-doctr[torch]
+rapidfuzz
+
+# Tests
+pytest
+pytest-asyncio
+httpx
+
+# Lint
+ruff
+

@@ -41,4 +41,11 @@ docker-data/
 *.tar
 uploads/
 
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
 
+# -- Tests ---
+__pycache__/
+tests/__pycache__/
