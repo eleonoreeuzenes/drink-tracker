@@ -1,7 +1,9 @@
 # tests/services/test_extract_text_pipeline.py
 
 from pathlib import Path
+
 from app.services.ocr_service import extract_text
+
 
 def test_extract_text_with_real_image():
     # Path to this test file
