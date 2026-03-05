@@ -21,6 +21,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the project
 COPY . .
 
+ENV PYTHONPATH="/app:${PYTHONPATH}"
+
 # Expose FastAPI port
 EXPOSE 8000
 
