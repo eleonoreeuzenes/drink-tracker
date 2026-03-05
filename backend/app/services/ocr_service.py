@@ -1,10 +1,10 @@
 from pathlib import Path
-from app.core.fuzzy_matching import match_drink_message
-from app.core.text_normalization import normalize_text
+
 from doctr.io import DocumentFile
 from doctr.models import ocr_predictor
-from app.core.drink_messages import KNOWN_DRINK_MESSAGES
 
+from app.core.fuzzy_matching import match_drink_message
+from app.core.text_normalization import normalize_text
 
 model = ocr_predictor(pretrained=True)
 

@@ -2,6 +2,7 @@
 
 from app.core.text_normalization import normalize_text
 
+
 def test_normalize_text_basic():
     assert normalize_text("Préparando Latte Gourrnad.") == "preparando latte gourrnad"
 

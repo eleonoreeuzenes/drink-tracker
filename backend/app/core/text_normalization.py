@@ -1,8 +1,8 @@
 # app/core/text_normalization.py
 
-from app.core.drink_messages import KNOWN_DRINK_MESSAGES
-import unicodedata 
 import re
+import unicodedata
+
 
 def normalize_text(text: str) -> str:
     """

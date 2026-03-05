@@ -2,6 +2,7 @@
 
 from app.core.fuzzy_matching import match_drink_message
 
+
 def test_match_latte():
     assert match_drink_message("preparand0 latte gourrnad") == "preparando latte gourmand"
 
