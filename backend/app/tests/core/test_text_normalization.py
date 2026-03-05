@@ -10,4 +10,4 @@ def test_normalize_text_noise():
     assert normalize_text("preparando_latte|gourmand") == "preparando latte gourmand"
 
 def test_normalize_text_spaces():
-    assert normalize_text("  preparando   latte   gourmand ") == "preparando latte gourmand"  # noqa: E501
+    assert normalize_text("  preparando   latte   gourmand ") == "preparando latte gourmand"
