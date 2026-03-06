@@ -15,3 +15,5 @@ httpx
 # Lint
 ruff
 
+# Sqlite
+sqlalchemy 
