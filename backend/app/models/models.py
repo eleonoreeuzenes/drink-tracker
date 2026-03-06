@@ -1,8 +1,9 @@
 from datetime import datetime, timezone
 
-from app.db import Base
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
+from app.database import Base
 
 
 class Drink(Base):
